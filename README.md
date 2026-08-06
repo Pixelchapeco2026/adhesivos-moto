@@ -1,0 +1,1 @@
+# adhesivos-moto
