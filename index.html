@@ -407,223 +407,45 @@ Solicitar orçamento
 </div>
 
 </section>
-
-
 <section class="catalogo" id="catalogo">
 
-<div class="container">
-
-<div class="title">
-<h2>Catálogo de motos</h2>
-<p>Escolha a marca ou pesquise o modelo.</p>
-</div>
-
-<div class="search">
-<input
-id="busca"
-type="text"
-placeholder="Buscar Titan, XRE, Bros, Start..."
-onkeyup="buscar()">
-</div>
-
-<div class="brands">
-
-<div class="brand" onclick="filtrar('todos')">TODOS</div>
-<div class="brand" onclick="filtrar('honda')">HONDA</div>
-<div class="brand" onclick="filtrar('yamaha')">YAMAHA</div>
-<div class="brand" onclick="filtrar('universal')">UNIVERSAIS</div>
-
-</div>
-
-
-<div class="products">
-
-
-<div class="product" data-brand="honda" data-name="honda titan cg 160">
-
-<div class="product-image">
-<img src="honda-titan-160.jpg" alt="Honda Titan 160">
-</div>
-
-<div class="product-info">
-<h3>Honda Titan</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda biz">
-
-<div class="product-image">
-<div class="placeholder">HONDA BIZ</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Biz</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda bros">
-
-<div class="product-image">
-<div class="placeholder">HONDA BROS</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Bros</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda cargo">
-
-<div class="product-image">
-<div class="placeholder">HONDA CARGO</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Cargo</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda cb190 cb 190">
-
-<div class="product-image">
-<div class="placeholder">HONDA CB 190</div>
-</div>
-
-<div class="product-info">
-<h3>Honda CB 190</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda crf">
-
-<div class="product-image">
-<div class="placeholder">HONDA CRF</div>
-</div>
-
-<div class="product-info">
-<h3>Honda CRF</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda fan">
-
-<div class="product-image">
-<div class="placeholder">HONDA FAN</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Fan</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda pop">
-
-<div class="product-image">
-<div class="placeholder">HONDA POP</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Pop</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda start">
-
-<div class="product-image">
-<div class="placeholder">HONDA START</div>
-</div>
-
-<div class="product-info">
-<h3>Honda Start</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda xr">
-
-<div class="product-image">
-<div class="placeholder">HONDA XR</div>
-</div>
-
-<div class="product-info">
-<h3>Honda XR</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="honda" data-name="honda xre">
-
-<div class="product-image">
-<div class="placeholder">HONDA XRE</div>
-</div>
-
-<div class="product-info">
-<h3>Honda XRE</h3>
-<p>Modelos disponíveis</p>
-<a href="#">Ver modelos</a>
-</div>
-
-</div>
-
-
-<div class="product" data-brand="universal" data-name="adesivos aros rodas universal">
-
-<div class="product-image">
-<div class="placeholder">ADESIVOS PARA ARO</div>
-</div>
-
-<div class="product-info">
-<h3>Adesivos para aro</h3>
-<p>Modelos universais e personalizados</p>
-<a href="#">Ver coleção</a>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+  <div class="container">
+
+    <div class="title">
+      <h2>Catálogo de motos</h2>
+      <p>Escolha a marca ou pesquise o modelo.</p>
+    </div>
+
+    <div class="search">
+      <input
+        id="busca"
+        type="text"
+        placeholder="Buscar Titan, XRE, Bros, Start..."
+      >
+    </div>
+
+    <div class="filtros">
+      <button type="button">TODOS</button>
+      <button type="button">HONDA</button>
+      <button type="button">YAMAHA</button>
+      <button type="button">UNIVERSAIS</button>
+    </div>
+
+    <div class="produtos">
+
+      <div class="produto">
+        <img src="honda-titan-160.jpg" alt="Honda Titan 160">
+        <h3>Honda Titan 160</h3>
+        <p>Adesivos para Honda Titan 160</p>
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
+
+
 
 
 <section id="cores">
