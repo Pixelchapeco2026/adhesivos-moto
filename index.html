@@ -1,338 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixel Chapecó | Adesivos para Motos</title>
-  <meta name="description" content="Catálogo de adesivos para motos da Pixel Chapecó. Encontre seu modelo, veja as opções e fale direto pelo WhatsApp.">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:#0b0b0d;
-      color:#fff;
-      line-height:1.5;
-    }
-    a{text-decoration:none;color:inherit}
-    button,input{font:inherit}
-    img{display:block;width:100%}
-
-    .topbar{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(11,11,13,.96);
-      border-bottom:1px solid #27272d;
-      backdrop-filter:blur(10px);
-    }
-    .nav{
-      max-width:1180px;margin:auto;padding:14px 20px;
-      display:flex;align-items:center;justify-content:space-between;gap:18px;
-    }
-    .brand{font-size:1.35rem;font-weight:900;letter-spacing:.5px}
-    .brand span{color:#f5c400}
-    .navlinks{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:.95rem}
-    .navlinks a:hover{color:#f5c400}
-    .whats-small{
-      background:#f5c400;color:#111;padding:9px 13px;border-radius:9px;font-weight:900;
-    }
-
-    .hero{
-      min-height:64vh;
-      display:grid;place-items:center;text-align:center;
-      padding:78px 20px 60px;
-      background:radial-gradient(circle at 50% 25%,#28282f 0,#111116 42%,#09090b 78%);
-      border-bottom:1px solid #222228;
-    }
-    .hero-inner{max-width:900px}
-    .eyebrow{
-      color:#f5c400;font-weight:900;text-transform:uppercase;
-      letter-spacing:1.6px;font-size:.85rem;margin-bottom:12px;
-    }
-    h1{
-      font-size:clamp(2.5rem,6vw,5.2rem);
-      line-height:.98;text-transform:uppercase;margin-bottom:20px;
-    }
-    .hero p{
-      max-width:720px;margin:0 auto 28px;color:#c7c7cd;font-size:1.08rem;
-    }
-    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    .btn{
-      min-height:48px;padding:12px 20px;border-radius:10px;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-weight:900;border:1px solid #34343b;cursor:pointer;
-    }
-    .btn-primary{background:#f5c400;color:#111;border-color:#f5c400}
-    .btn-secondary{background:#17171b;color:#fff}
-
-    .section{max-width:1180px;margin:auto;padding:62px 20px}
-    .section-title{margin-bottom:24px}
-    .section-title h2{font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:7px}
-    .section-title p{color:#aaaab2}
-
-    .search{
-      width:100%;min-height:52px;border-radius:12px;
-      border:1px solid #303037;background:#151519;color:white;
-      padding:0 16px;font-size:1rem;outline:none;margin-bottom:18px;
-    }
-    .search:focus{border-color:#f5c400}
-    .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
-    .filter-btn{
-      border:1px solid #303037;background:#151519;color:#e9e9ec;
-      padding:10px 16px;border-radius:999px;font-weight:900;cursor:pointer;
-    }
-    .filter-btn:hover,.filter-btn.active{
-      background:#f5c400;color:#111;border-color:#f5c400;
-    }
-
-    .grid{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
-    }
-    .card{
-      background:#151519;border:1px solid #28282f;border-radius:16px;
-      overflow:hidden;display:flex;flex-direction:column;
-      transition:transform .18s ease,border-color .18s ease;
-    }
-    .card:hover{transform:translateY(-3px);border-color:#f5c400}
-    .card-image{
-      aspect-ratio:4/3;background:#fff;overflow:hidden;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .card-image img{height:100%;object-fit:contain;background:#fff}
-    .card-body{padding:15px;display:flex;flex-direction:column;gap:9px;flex:1}
-    .tag{
-      display:inline-block;color:#f5c400;font-size:.75rem;
-      font-weight:900;text-transform:uppercase;
-    }
-    .card h3{font-size:1.05rem;line-height:1.25}
-    .card-whats{
-      margin-top:auto;background:#f5c400;color:#111;
-      padding:10px 12px;border-radius:9px;text-align:center;font-weight:900;
-    }
-    .empty{
-      grid-column:1/-1;text-align:center;padding:45px 15px;
-      color:#aaaab2;border:1px dashed #34343b;border-radius:14px;
-    }
-
-    .info{
-      background:#121216;border-top:1px solid #25252a;border-bottom:1px solid #25252a;
-    }
-    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .info-box{
-      background:#18181d;border:1px solid #292930;border-radius:15px;padding:22px;
-    }
-    .info-box h3{margin-bottom:7px}
-    .info-box p{color:#aaaab2}
-
-    .contact-box{
-      background:#151519;border:1px solid #2b2b31;border-radius:18px;
-      padding:28px;text-align:center;
-    }
-    .contact-box p{color:#b6b6bd;margin:8px auto 20px;max-width:650px}
-
-    footer{text-align:center;color:#8e8e97;padding:32px 20px 45px}
-    footer strong{color:#fff}
-
-    @media(max-width:850px){
-      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .info-grid{grid-template-columns:1fr}
-    }
-    @media(max-width:620px){
-      .grid{grid-template-columns:1fr}
-      .navlinks a:not(.whats-small){display:none}
-      .hero{min-height:54vh}
-      h1{font-size:2.7rem}
-    }
-  </style>
-</head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pixel Chapecó | Adesivos para Motos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:#0b0b0d;color:#fff;line-height:1.5}a{color:inherit;text-decoration:none}button,input{font:inherit}img{display:block;width:100%}
+.top{position:sticky;top:0;z-index:999;background:rgba(11,11,13,.96);border-bottom:1px solid #27272d}.nav{max-width:1200px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:950;font-size:1.35rem}.brand span{color:#f5c400}.links{display:flex;gap:17px;align-items:center;flex-wrap:wrap}.wapp{background:#f5c400;color:#111!important;padding:9px 13px;border-radius:9px;font-weight:900}
+.hero{min-height:58vh;display:grid;place-items:center;text-align:center;padding:78px 20px 55px;background:radial-gradient(circle at 50% 25%,#292930 0,#121217 42%,#09090b 78%)}.hero>div{max-width:900px}.eyebrow{color:#f5c400;font-weight:900;text-transform:uppercase;letter-spacing:1.6px;font-size:.85rem;margin-bottom:12px}h1{font-size:clamp(2.6rem,6vw,5rem);line-height:.98;text-transform:uppercase;margin-bottom:18px}.hero p{max-width:720px;margin:0 auto 26px;color:#c7c7cd;font-size:1.08rem}
+.section{max-width:1200px;margin:auto;padding:60px 20px}.section-title{margin-bottom:24px}.section-title h2{font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:7px}.section-title p{color:#aaaab2}
+.main-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.main-btn{border:2px solid #303037;background:#151519;color:#fff;padding:18px 12px;border-radius:14px;font-weight:950;font-size:1.08rem;cursor:pointer}.main-btn.active,.main-btn:hover{background:#f5c400;color:#111;border-color:#f5c400}
+.sub-title{margin:5px 0 10px;font-weight:900;color:#f5c400}.subfilters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}.subfilter{border:1px solid #303037;background:#151519;color:#eee;padding:9px 14px;border-radius:999px;font-weight:900;cursor:pointer}.subfilter.active,.subfilter:hover{background:#f5c400;color:#111;border-color:#f5c400}
+.search{width:100%;min-height:52px;border:1px solid #303037;background:#151519;color:white;border-radius:12px;padding:0 16px;outline:none;margin-bottom:17px}.count{color:#92929a;font-size:.9rem;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{background:#151519;border:1px solid #28282f;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.card:hover{border-color:#f5c400}.image{aspect-ratio:4/3;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center}.image img{height:100%;object-fit:contain;background:#fff}.body{padding:15px;display:flex;flex-direction:column;gap:8px;flex:1}.tag{font-size:.74rem;font-weight:900;color:#f5c400}.card h3{font-size:1.02rem}.choose{margin-top:auto;background:#f5c400;color:#111;border:0;border-radius:9px;padding:10px 11px;font-weight:900;cursor:pointer}
+.colors{background:#111116;border-top:1px solid #25252a;border-bottom:1px solid #25252a}.selected-model{background:#18181d;border:1px solid #313138;border-left:4px solid #f5c400;border-radius:12px;padding:15px 17px;margin-bottom:20px}.selected-model span{color:#f5c400;font-weight:900}
+.color-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.color-card{background:#18181d;color:#fff;border:2px solid #2d2d34;border-radius:13px;padding:12px;cursor:pointer;text-align:left}.color-card.selected,.color-card:hover{border-color:#f5c400}.swatch{height:68px;border-radius:9px;border:1px solid rgba(255,255,255,.2);margin-bottom:9px}.code{font-size:.78rem;color:#f5c400;font-weight:900}.cname{font-weight:850}
+.order-box{margin-top:20px;background:#18181d;border:1px solid #303037;border-radius:15px;padding:19px;display:flex;gap:15px;align-items:center;justify-content:space-between;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:10px;border:1px solid #35353b;font-weight:900}.primary{background:#f5c400;color:#111;border-color:#f5c400}
+.info{background:#121216}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.info-box{background:#18181d;border:1px solid #2a2a31;border-radius:15px;padding:22px}.info-box p{color:#aaaab2;margin-top:6px}.contact{text-align:center;background:#151519;border:1px solid #2d2d34;border-radius:18px;padding:30px}.contact p{color:#aaaab2;margin:8px auto 20px}footer{text-align:center;color:#8e8e97;padding:32px 20px 45px}footer strong{color:#fff}.empty{grid-column:1/-1;text-align:center;padding:40px;color:#aaaab2;border:1px dashed #34343b;border-radius:14px}
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.color-grid{grid-template-columns:repeat(2,1fr)}.main-buttons{grid-template-columns:1fr}.links a:not(.wapp){display:none}}
+</style></head>
 <body>
-
-<header class="topbar">
-  <nav class="nav">
-    <a class="brand" href="#inicio">PIXEL <span>CHAPECÓ</span></a>
-    <div class="navlinks">
-      <a href="#catalogo">Catálogo</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-      <a class="whats-small" href="https://wa.me/5549991352955?text=Olá%20Pixel%20Chapecó!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener">WhatsApp</a>
-    </div>
-  </nav>
-</header>
-
+<header class="top"><nav class="nav"><a class="brand" href="#inicio">PIXEL <span>CHAPECÓ</span></a><div class="links"><a href="#catalogo">Catálogo</a><a href="#cores">Cores</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a><a class="wapp" target="_blank" href="https://wa.me/5549991352955?text=Olá%20Pixel%20Chapecó!">WhatsApp</a></div></nav></header>
 <main>
-  <section class="hero" id="inicio">
-    <div class="hero-inner">
-      <div class="eyebrow">Adesivos para motos</div>
-      <h1>Personalize sua moto</h1>
-      <p>Escolha o modelo da sua moto, veja os adesivos disponíveis e fale direto com a Pixel pelo WhatsApp.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
-        <a class="btn btn-secondary" href="https://wa.me/5549991352955?text=Olá%20Pixel%20Chapecó!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener">Falar no WhatsApp</a>
-      </div>
-    </div>
-  </section>
+<section class="hero" id="inicio"><div><div class="eyebrow">Adesivos para motos</div><h1>Personalize sua moto</h1><p>Escolha a marca, depois o modelo, selecione a cor e envie seu pedido pelo WhatsApp.</p></div></section>
 
-  <section class="section" id="catalogo">
-    <div class="section-title">
-      <h2>Catálogo de motos</h2>
-      <p>Pesquise pelo modelo ou use os botões para filtrar.</p>
-    </div>
+<section class="section" id="catalogo">
+<div class="section-title"><h2>Catálogo de motos</h2><p>Primeiro escolha uma das três categorias principais.</p></div>
+<div class="main-buttons">
+<button class="main-btn active" data-group="HONDA">HONDA</button>
+<button class="main-btn" data-group="YAMAHA">YAMAHA</button>
+<button class="main-btn" data-group="OUTROS">OUTROS</button>
+</div>
 
-    <input id="searchInput" class="search" type="search" placeholder="Ex.: Biz 125, Bros 160, Titan 160...">
+<div id="hondaArea">
+<div class="sub-title">Modelos Honda</div>
+<div class="subfilters">
+<button class="subfilter active" data-model="TODOS">TODOS</button><button class="subfilter" data-model="BIZ">BIZ</button><button class="subfilter" data-model="BROS">BROS</button><button class="subfilter" data-model="CARGO">CARGO</button><button class="subfilter" data-model="CB / TWISTER">CB / TWISTER</button><button class="subfilter" data-model="CRF">CRF</button><button class="subfilter" data-model="FAN">FAN</button><button class="subfilter" data-model="POP">POP</button><button class="subfilter" data-model="START">START</button><button class="subfilter" data-model="TITAN">TITAN</button><button class="subfilter" data-model="XR">XR</button><button class="subfilter" data-model="XRE">XRE</button>
+</div>
+</div>
 
-    <div class="filters">
-      <button class="filter-btn active" data-filter="todos">Todos</button>
-      <button class="filter-btn" data-filter="biz">Biz</button>
-      <button class="filter-btn" data-filter="bros">Bros</button>
-      <button class="filter-btn" data-filter="cargo">Cargo</button>
-      <button class="filter-btn" data-filter="cb">CB / Twister</button>
-      <button class="filter-btn" data-filter="titan">Titan</button>
-    </div>
+<input id="search" class="search" type="search" placeholder="Pesquisar modelo...">
+<div id="count" class="count"></div>
+<div id="grid" class="grid"></div>
+</section>
 
-    <div id="catalogGrid" class="grid"></div>
-  </section>
+<section class="colors" id="cores"><div class="section">
+<div class="section-title"><h2>Escolha sua cor</h2><p>Escolha um adesivo no catálogo e depois selecione a cor.</p></div>
+<div class="selected-model">Modelo selecionado: <span id="modelText">Nenhum modelo selecionado</span></div>
+<div id="colorGrid" class="color-grid"></div>
+<div class="order-box"><div><strong id="selectionText">Escolha um modelo e uma cor</strong></div><a id="finalWhats" class="btn primary" target="_blank" href="https://wa.me/5549991352955">Enviar pelo WhatsApp</a></div>
+</div></section>
 
-  <section class="info" id="servicos">
-    <div class="section">
-      <div class="section-title">
-        <h2>Serviços Pixel</h2>
-        <p>Adesivos para personalizar sua moto com praticidade.</p>
-      </div>
-      <div class="info-grid">
-        <article class="info-box">
-          <h3>Adesivos por modelo</h3>
-          <p>Escolha a moto, o ano e o estilo disponível no catálogo.</p>
-        </article>
-        <article class="info-box">
-          <h3>Personalização</h3>
-          <p>Consulte opções de cores e projetos personalizados. Trabalhos especiais podem ter custo adicional conforme a complexidade.</p>
-        </article>
-        <article class="info-box">
-          <h3>Instalação</h3>
-          <p>Também realizamos instalação local em Chapecó, conforme disponibilidade.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contato">
-    <div class="contact-box">
-      <h2>Fale com a Pixel Chapecó</h2>
-      <p>Envie uma mensagem pelo WhatsApp para consultar modelos, cores, disponibilidade e instalação.</p>
-      <a class="btn btn-primary" href="https://wa.me/5549991352955?text=Olá%20Pixel%20Chapecó!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener">Abrir WhatsApp</a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <strong>Pixel Chapecó</strong><br>
-  Adesivos para motos • Chapecó - SC
-</footer>
+<section class="info" id="servicos"><div class="section"><div class="section-title"><h2>Serviços Pixel</h2></div><div class="info-grid"><div class="info-box"><h3>Adesivos por modelo</h3><p>Escolha o modelo e o estilo disponível.</p></div><div class="info-box"><h3>Personalização</h3><p>Consulte opções de cores e projetos personalizados.</p></div><div class="info-box"><h3>Instalação</h3><p>Também realizamos instalação local em Chapecó.</p></div></div></div></section>
+<section class="section" id="contato"><div class="contact"><h2>Fale com a Pixel Chapecó</h2><p>Consulte disponibilidade, cores e modelos.</p><a class="btn primary" target="_blank" href="https://wa.me/5549991352955?text=Olá%20Pixel%20Chapecó!">Abrir WhatsApp</a></div></section>
+</main><footer><strong>Pixel Chapecó</strong><br>Adesivos para motos • Chapecó - SC</footer>
 
 <script>
-  const WHATSAPP = "5549991352955";
-
-  const motos = [
-    {cat:"biz", nome:"Biz - Modelos", img:"BIZ/biz-modelos.jpg"},
-    {cat:"biz", nome:"Honda Biz 100", img:"BIZ/honda-biz-100.jpg"},
-    {cat:"biz", nome:"Honda Biz 125", img:"BIZ/honda-biz-125.jpg"},
-    {cat:"biz", nome:"Honda Biz 125 - Modelo 2", img:"BIZ/honda-biz-125-2.jpg"},
-    {cat:"biz", nome:"Honda Biz 125 - Modelo 2.2", img:"BIZ/honda-biz-125-2-2.jpg"},
-    {cat:"biz", nome:"Honda Biz 125 2023", img:"BIZ/honda-biz-125-2023.jpg"},
-    {cat:"biz", nome:"Honda Biz 125 2023 - Modelo 2", img:"BIZ/honda-biz-125-2023-2.jpg"},
-
-    {cat:"bros", nome:"Bros 2020 Limitada", img:"BROS/bros 2020 limitada.jpg"},
-    {cat:"bros", nome:"Bros 160 - Adesivo Pronto", img:"BROS/bros-160-adesivo-pronto.jpg"},
-    {cat:"bros", nome:"Bros 160 2020 - Edição", img:"BROS/bross-160-2020-ediçao.jpg"},
-    {cat:"bros", nome:"Bros 2003", img:"BROS/bross-2003.jpg"},
-    {cat:"bros", nome:"Bros 2005", img:"BROS/bross-2005.jpg"},
-    {cat:"bros", nome:"Bros 2020 - Frente", img:"BROS/bross-2020-frente.jpg"},
-    {cat:"bros", nome:"Bros 2020 - Original", img:"BROS/bross-2020-original.jpg"},
-    {cat:"bros", nome:"Bros 2020 - Special Edition", img:"BROS/bross-2020-special-edition.jpg"},
-    {cat:"bros", nome:"Bros 2025", img:"BROS/bross-2025.jpg"},
-    {cat:"bros", nome:"Honda Bros 150", img:"BROS/honda-bros-150.jpg"},
-    {cat:"bros", nome:"Honda Bros 160", img:"BROS/honda-bros-160.jpg"},
-    {cat:"bros", nome:"Honda Bros 160 2020", img:"BROS/honda-bros-160-2020.jpg"},
-    {cat:"bros", nome:"Honda Bros 2012", img:"BROS/honda-bros-2012.jpg"},
-    {cat:"bros", nome:"Honda Bros 2016", img:"BROS/honda-bros-2016.jpg"},
-    {cat:"bros", nome:"Honda Bros 2018", img:"BROS/honda-bros-2018.jpg"},
-    {cat:"bros", nome:"Honda Bros 2020", img:"BROS/honda-bros-2020.jpg"},
-    {cat:"bros", nome:"Honda Bros 2023 Branca", img:"BROS/honda-bros-2023-branca.jpg"},
-    {cat:"bros", nome:"Honda Bros ESD", img:"BROS/honda-bros-esd.jpg"},
-    {cat:"bros", nome:"Kit Bros 150 KS", img:"BROS/kit-bross-150-ks.jpg"},
-
-    {cat:"cargo", nome:"Honda Cargo 160 2023", img:"CARGO/honda-cargo-160-2023-.jpg"},
-
-    {cat:"cb", nome:"Honda CB 190", img:"CB190 HONDA/cb-190.jpg"},
-    {cat:"cb", nome:"CB 250 Twister", img:"CB190 HONDA/cb-250-twister.jpg"},
-    {cat:"cb", nome:"CB 300 - Modelo 2B", img:"CB190 HONDA/cb-300-modelo-2b.jpg"},
-    {cat:"cb", nome:"Honda CB 190R Completa", img:"CB190 HONDA/honda-cb-190r-completa.jpg"},
-    {cat:"cb", nome:"Honda CB 300F 2023", img:"CB190 HONDA/honda-cb-300-f-2023.jpg"},
-    {cat:"cb", nome:"Honda CB 300F 2023 - Modelo 2", img:"CB190 HONDA/honda-cb-300f-2023.jpg"},
-    {cat:"cb", nome:"Honda CB 500X 2023", img:"CB190 HONDA/honda-cb-500-X-2023.jpg"},
-    {cat:"cb", nome:"Honda CB 500F 2023", img:"CB190 HONDA/honda-cb-500-f-2023.jpg"},
-    {cat:"cb", nome:"Honda CB 500X 2023 - Modelo 2", img:"CB190 HONDA/honda-cb-500-x-2023-2.jpg"},
-    {cat:"cb", nome:"Honda CB Twister 2019", img:"CB190 HONDA/honda-cb-twister-2019.jpg"},
-
-    {cat:"titan", nome:"Honda Titan 160", img:"honda-titan-160.jpg"},
-    {cat:"titan", nome:"Honda CG Titan 160 EX 2017", img:"HONDA CG TITAN 160 EX 2017.jpg"},
-    {cat:"titan", nome:"Adesivo Carenagem do Farol Titan 2022", img:"ADESIVO CARENAGEM DO FAROL TITAN 2022.jpg"}
-  ];
-
-  const grid = document.getElementById("catalogGrid");
-  const searchInput = document.getElementById("searchInput");
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  let filtroAtual = "todos";
-
-  function normalizar(texto){
-    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-  }
-
-  function linkWhats(nome){
-    const texto = `Olá Pixel Chapecó! Tenho interesse no adesivo: ${nome}.`;
-    return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-  }
-
-  function render(){
-    const termo = normalizar(searchInput.value.trim());
-
-    const filtradas = motos.filter(moto=>{
-      const categoriaOk = filtroAtual === "todos" || moto.cat === filtroAtual;
-      const buscaOk = normalizar(moto.nome).includes(termo);
-      return categoriaOk && buscaOk;
-    });
-
-    if(!filtradas.length){
-      grid.innerHTML = '<div class="empty">Nenhum modelo encontrado. Tente outro nome.</div>';
-      return;
-    }
-
-    grid.innerHTML = filtradas.map(moto=>`
-      <article class="card">
-        <div class="card-image">
-          <img src="${encodeURI(moto.img)}" alt="${moto.nome}" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">${moto.cat === "cb" ? "CB / Twister" : moto.cat}</span>
-          <h3>${moto.nome}</h3>
-          <a class="card-whats" href="${linkWhats(moto.nome)}" target="_blank" rel="noopener">Consultar no WhatsApp</a>
-        </div>
-      </article>
-    `).join("");
-  }
-
-  searchInput.addEventListener("input",render);
-
-  filterButtons.forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      filterButtons.forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-      filtroAtual = btn.dataset.filter;
-      render();
-    });
-  });
-
-  render();
+const WHATSAPP="5549991352955";
+const motos=[{"group": "HONDA", "model": "BIZ", "nome": "Biz Modelos", "img": "BIZ/biz-modelos.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 100", "img": "BIZ/honda-biz-100.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 125 2 2", "img": "BIZ/honda-biz-125-2-2.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 125 2", "img": "BIZ/honda-biz-125-2.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 125 2023 2", "img": "BIZ/honda-biz-125-2023-2.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 125 2023", "img": "BIZ/honda-biz-125-2023.jpg"}, {"group": "HONDA", "model": "BIZ", "nome": "Honda Biz 125", "img": "BIZ/honda-biz-125.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2020 Limitada", "img": "BROS/bros 2020 limitada.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 160 Adesivo Pronto", "img": "BROS/bros-160-adesivo-pronto.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 160 2020 Ediçao", "img": "BROS/bross-160-2020-ediçao.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2003", "img": "BROS/bross-2003.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2005", "img": "BROS/bross-2005.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2020 Frente", "img": "BROS/bross-2020-frente.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2020 Original", "img": "BROS/bross-2020-original.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2020 Special Edition", "img": "BROS/bross-2020-special-edition.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Bros 2025", "img": "BROS/bross-2025.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 150", "img": "BROS/honda-bros-150.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 160 2020", "img": "BROS/honda-bros-160-2020.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 160", "img": "BROS/honda-bros-160.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 2012", "img": "BROS/honda-bros-2012.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 2016", "img": "BROS/honda-bros-2016.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 2018", "img": "BROS/honda-bros-2018.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 2020", "img": "BROS/honda-bros-2020.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros 2023 Branca", "img": "BROS/honda-bros-2023-branca.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Honda Bros Esd", "img": "BROS/honda-bros-esd.jpg"}, {"group": "HONDA", "model": "BROS", "nome": "Kit Bros 150 Ks", "img": "BROS/kit-bross-150-ks.jpg"}, {"group": "HONDA", "model": "CARGO", "nome": "Honda Cargo 160 2023", "img": "CARGO/honda-cargo-160-2023-.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "CB 190", "img": "CB190 HONDA/cb-190.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "CB 250 Twister", "img": "CB190 HONDA/cb-250-twister.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "CB 300 Modelo 2B", "img": "CB190 HONDA/cb-300-modelo-2b.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 190R Completa", "img": "CB190 HONDA/honda-cb-190r-completa.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 300 F 2023", "img": "CB190 HONDA/honda-cb-300-f-2023.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 300F 2023", "img": "CB190 HONDA/honda-cb-300f-2023.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 500 X 2023", "img": "CB190 HONDA/honda-cb-500-X-2023.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 500 F 2023", "img": "CB190 HONDA/honda-cb-500-f-2023.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB 500 X 2023 2", "img": "CB190 HONDA/honda-cb-500-x-2023-2.jpg"}, {"group": "HONDA", "model": "CB / TWISTER", "nome": "Honda CB Twister 2019", "img": "CB190 HONDA/honda-cb-twister-2019.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "230 CRF", "img": "CRF HONDA/230-crf.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 02", "img": "CRF HONDA/crf-02.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 2", "img": "CRF HONDA/crf-2.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 20110 2014", "img": "CRF HONDA/crf-20110-2014.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 2030 Rock Star", "img": "CRF HONDA/crf-2030-rock-star.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 230 1", "img": "CRF HONDA/crf-230-1.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 230 2", "img": "CRF HONDA/crf-230-2.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 230 Fox", "img": "CRF HONDA/crf-230-fox.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 230", "img": "CRF HONDA/crf-230.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 250 2020", "img": "CRF HONDA/crf-250-2020.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 250", "img": "CRF HONDA/crf-250.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF 50", "img": "CRF HONDA/crf-50.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF Monster", "img": "CRF HONDA/crf-MONSTER.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "CRF250 202 Spelhado", "img": "CRF HONDA/crf250-202-spelhado.jpg"}, {"group": "HONDA", "model": "CRF", "nome": "Honda CRF 2030 F", "img": "CRF HONDA/honda-crf-2030-f.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "CG Fan 2020", "img": "FAN HONDA/cg-fan-2020.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 160 2020", "img": "FAN HONDA/fan-160-2020-.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 160 2020 1", "img": "FAN HONDA/fan-160-2020-1.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 160 2020 2B Film 1", "img": "FAN HONDA/fan-160-2020-2b film-1.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 160 2020", "img": "FAN HONDA/fan-160-2020.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 2020", "img": "FAN HONDA/fan-2020.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Fan 2022", "img": "FAN HONDA/fan-2022.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda CG Fan 150", "img": "FAN HONDA/honda-cg-fan-150.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda CG Fan Prata 2023", "img": "FAN HONDA/honda-cg-fan-prata-2023.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda CG Fan Prata2023 Metalica", "img": "FAN HONDA/honda-cg-fan-prata2023-metalica.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda Fan 125", "img": "FAN HONDA/honda-fan-125.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda Fan 160 2018", "img": "FAN HONDA/honda-fan-160-2018.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda Fan 2013 Ed Limitada", "img": "FAN HONDA/honda-fan-2013-ed-limitada.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda Fan CB125", "img": "FAN HONDA/honda-fan-cb125.jpg"}, {"group": "HONDA", "model": "FAN", "nome": "Honda Fan CG 150 ESI", "img": "FAN HONDA/honda-fan-cg-150-esi.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 100 2023", "img": "POP/honda-pop-100-2023.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 100I 2023 Grafico", "img": "POP/honda-pop-100i-2023-grafico.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 1010I 2019", "img": "POP/honda-pop-1010i-2019.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 110 2", "img": "POP/honda-pop-110 -2.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 110 Edition Limited 2020", "img": "POP/honda-pop-110-edition-limited-2020.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 110", "img": "POP/honda-pop-110.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 110I", "img": "POP/honda-pop-110i.jpg"}, {"group": "HONDA", "model": "POP", "nome": "Honda Pop 2020", "img": "POP/honda-pop-2020.jpg"}, {"group": "HONDA", "model": "START", "nome": "Honda Star 160", "img": "START/honda-star-160.jpg"}, {"group": "HONDA", "model": "START", "nome": "Honda Start 160", "img": "START/honda-start-160.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Adesivo Carenagem Do Farol Titan 2022", "img": "TITAN HONDA/adesivo-carenagem-do-farol-titan-2022.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda CG Titan 160 Ex 2017", "img": "TITAN HONDA/honda-cg-titan-160-ex-2017.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 150", "img": "TITAN HONDA/honda-titan-150.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160 2 2", "img": "TITAN HONDA/honda-titan-160-2-2.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160 2", "img": "TITAN HONDA/honda-titan-160-2.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160 2018", "img": "TITAN HONDA/honda-titan-160-2018.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160 2023 Kit Grafico", "img": "TITAN HONDA/honda-titan-160-2023-kit-grafico.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160 Grafica Ws", "img": "TITAN HONDA/honda-titan-160-grafica-ws.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 160", "img": "TITAN HONDA/honda-titan-160.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan 2008", "img": "TITAN HONDA/honda-titan-2008.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Honda Titan160 2023 Moto Midiashop", "img": "TITAN HONDA/honda-titan160-2023-moto-midiashop.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Titan 160 2019", "img": "TITAN HONDA/titan-160-2019.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Titan 2022", "img": "TITAN HONDA/titan-2022.jpg"}, {"group": "HONDA", "model": "TITAN", "nome": "Titan CG 160 2019", "img": "TITAN HONDA/titan-cg-160-2019.jpg"}, {"group": "HONDA", "model": "XR", "nome": "Tornado 2008", "img": "XR/tornado-2008.jpg"}, {"group": "HONDA", "model": "XR", "nome": "Tornado XR 250", "img": "XR/tornado-xr-250.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "Honda XRE ADVenture 2023 Kit Grafico", "img": "XRE/honda-xre-adventure-2023-kit-grafico.png"}, {"group": "HONDA", "model": "XRE", "nome": "Honda XRE ADVenture 2023 Moto", "img": "XRE/honda-xre-adventure-2023-moto-.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "Tornado Estilo XRE Rally", "img": "XRE/tornado-estilo-xre-rally.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "Vetor XRE ADVentur 2022", "img": "XRE/vetor-xre-adventur-2022.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 190 Speciaal Edition", "img": "XRE/xre-190-speciaal-edition.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 2012", "img": "XRE/xre-2012.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 2013 2014 2015", "img": "XRE/xre-2013-2014-2015.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 2020", "img": "XRE/xre-2020.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 300 Adesivo Asas", "img": "XRE/xre-300-adesivo-asas.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 300 Especial 2021", "img": "XRE/xre-300-especial-2021.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 300 Rally 3", "img": "XRE/xre-300-rally-3.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 300 Rally Mapa 2022", "img": "XRE/xre-300-rally-mapa-2022.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE 300 Rally", "img": "XRE/xre-300-rally.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE ADV 2022 Extrememotos", "img": "XRE/xre-adv-2022-extrememotos.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE ADV Mapa Mundi", "img": "XRE/xre-adv-mapa-mundi.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE ADVenture", "img": "XRE/xre-adventure.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE Rally 2017 1", "img": "XRE/xre-rally-2017-1.jpg"}, {"group": "HONDA", "model": "XRE", "nome": "XRE Rally", "img": "XRE/xre-rally.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "XJ6 250 2018", "img": "YAMAHA/XJ6-250-2018-.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "Factor 150 2016 2B", "img": "YAMAHA/factor-150-2016-2b.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "Factor 2011", "img": "YAMAHA/factor-2011.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "Kit Adesivos Fazer Ys 150", "img": "YAMAHA/kit-adesivos-fazer-ys-150.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "Kit Fazer", "img": "YAMAHA/kit-fazer.jpg"}, {"group": "YAMAHA", "model": "YAMAHA", "nome": "YBR Factor 125", "img": "YAMAHA/ybr-factor-125.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Rodas C 650 F", "img": "OUTROS/Rodas-c- 650-F.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Aros CB", "img": "OUTROS/aros-cb.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "CG 125 4Strokr", "img": "OUTROS/cg-125-4strokr.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda CB 300 2015", "img": "OUTROS/honda-cb-300-2015.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda Cdr 500R 2023 ADV", "img": "OUTROS/honda-cdr-500r-2023-adv.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda Elite 125 2023", "img": "OUTROS/honda-elite-125-2023.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda Elite 125", "img": "OUTROS/honda-elite-125.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda PCX DLX 2023 2", "img": "OUTROS/honda-pcx-dlx-2023-2.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda PCX DLX 2023", "img": "OUTROS/honda-pcx-dlx-2023.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda Sh 150I Kit Grafico", "img": "OUTROS/honda-sh-150i-kit-grafico.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "Honda Sh 150I", "img": "OUTROS/honda-sh-150i.jpg"}, {"group": "OUTROS", "model": "OUTROS", "nome": "NXR 160", "img": "OUTROS/nxr-160-.jpg"}];
+const cores=[
+{codigo:"C01",nome:"Branco",cor:"#ffffff"},{codigo:"C02",nome:"Preto",cor:"#111111"},{codigo:"C03",nome:"Vermelho",cor:"#d91f26"},{codigo:"C04",nome:"Azul",cor:"#1464d2"},{codigo:"C05",nome:"Amarelo",cor:"#f4d000"},{codigo:"C06",nome:"Verde",cor:"#1f9c4a"},{codigo:"C07",nome:"Laranja",cor:"#f47b20"},{codigo:"C08",nome:"Prata",cor:"#b8bcc3"},{codigo:"C09",nome:"Dourado",cor:"#c89a2b"},{codigo:"C10",nome:"Rosa",cor:"#ef63a7"},{codigo:"C11",nome:"Roxo",cor:"#7d3db8"},{codigo:"C12",nome:"Ciano",cor:"#16c7d9"},{codigo:"E01",nome:"Branco Refletivo",cor:"linear-gradient(135deg,#fff,#dfe6ea,#fff)"},{codigo:"E02",nome:"Prata Refletivo",cor:"linear-gradient(135deg,#e0e4e8,#aeb4bb,#f5f6f7)"},{codigo:"E03",nome:"Vermelho Refletivo",cor:"linear-gradient(135deg,#d71924,#ff5a60,#aa121a)"},{codigo:"E04",nome:"Amarelo Neon",cor:"#d7ff00"}];
+let grupo="HONDA",modeloFiltro="TODOS",modelo=null,cor=null;
+const grid=document.getElementById("grid"),search=document.getElementById("search"),count=document.getElementById("count"),hondaArea=document.getElementById("hondaArea");
+function norm(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+function render(){
+ const q=norm(search.value.trim());
+ const arr=motos.filter(m=>m.group===grupo&&(grupo!=="HONDA"||modeloFiltro==="TODOS"||m.model===modeloFiltro)&&norm(m.nome+" "+m.model).includes(q));
+ count.textContent=`${arr.length} item${arr.length===1?"":"s"}`;
+ if(!arr.length){grid.innerHTML='<div class="empty">Nenhum item encontrado.</div>';return}
+ grid.innerHTML=arr.map(m=>`<article class="card"><div class="image"><img src="${encodeURI(m.img)}" alt="${m.nome}" loading="lazy"></div><div class="body"><span class="tag">${m.model}</span><h3>${m.nome}</h3><button class="choose" data-index="${motos.indexOf(m)}">Escolher este modelo</button></div></article>`).join("");
+ document.querySelectorAll(".choose").forEach(b=>b.onclick=()=>{modelo=motos[Number(b.dataset.index)];document.getElementById("modelText").textContent=modelo.nome;updateOrder();document.getElementById("cores").scrollIntoView({behavior:"smooth"});});
+}
+document.querySelectorAll(".main-btn").forEach(b=>b.onclick=()=>{document.querySelectorAll(".main-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");grupo=b.dataset.group;modeloFiltro="TODOS";hondaArea.style.display=grupo==="HONDA"?"block":"none";document.querySelectorAll(".subfilter").forEach(x=>x.classList.toggle("active",x.dataset.model==="TODOS"));render();});
+document.querySelectorAll(".subfilter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".subfilter").forEach(x=>x.classList.remove("active"));b.classList.add("active");modeloFiltro=b.dataset.model;render();});
+search.addEventListener("input",render);
+const colorGrid=document.getElementById("colorGrid");colorGrid.innerHTML=cores.map((c,i)=>`<button class="color-card" data-i="${i}"><div class="swatch" style="background:${c.cor}"></div><div class="code">${c.codigo}</div><div class="cname">${c.nome}</div></button>`).join("");
+document.querySelectorAll(".color-card").forEach(b=>b.onclick=()=>{document.querySelectorAll(".color-card").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");cor=cores[Number(b.dataset.i)];updateOrder();});
+function updateOrder(){const t=document.getElementById("selectionText"),btn=document.getElementById("finalWhats");if(modelo&&cor){t.textContent=`${modelo.nome} • ${cor.codigo} - ${cor.nome}`;const msg=`Olá Pixel Chapecó! Quero consultar este adesivo:\nModelo: ${modelo.nome}\nCor: ${cor.codigo} - ${cor.nome}.`;btn.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;}else if(modelo){t.textContent=`${modelo.nome} • escolha uma cor`;btn.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá Pixel Chapecó! Tenho interesse no adesivo: "+modelo.nome+".")}`;}}
+render();
 </script>
-
-</body>
-</html>
+</body></html>
