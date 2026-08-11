@@ -1,636 +1,435 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Chapecó | Adesivos para Motos</title>
+  <meta name="description" content="Catálogo de adesivos para motos da Pixel Chapecó. Encontre seu modelo e veja as opções disponíveis." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0d;
+      color: #fff;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
 
-<title>Pixel Comunicação Visual</title>
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11,11,13,.96);
+      border-bottom: 1px solid #26262b;
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: .5px;
+    }
+    .brand span { color: #f5c400; }
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: .95rem;
+    }
+    .navlinks a:hover { color: #f5c400; }
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+    .hero {
+      min-height: 62vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 80px 20px 55px;
+      background:
+        radial-gradient(circle at 50% 30%, #25252b 0, #101014 42%, #09090b 75%);
+      border-bottom: 1px solid #202026;
+    }
+    .hero-inner { max-width: 880px; }
+    .eyebrow {
+      color: #f5c400;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      font-size: .85rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: .98;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: #c9c9cf;
+      font-size: 1.08rem;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+      border: 1px solid #34343a;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #f5c400;
+      color: #111;
+      border-color: #f5c400;
+    }
+    .btn-secondary { background: #17171b; }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f4f4;
-  color:#161616;
-}
+    .section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 64px 20px;
+    }
+    .section-title {
+      margin-bottom: 24px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
+    }
+    .section-title p { color: #a9a9b1; }
 
-header{
-  background:#0e0e0e;
-  color:white;
-  padding:18px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
+    .search-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .search {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 12px;
+      border: 1px solid #303037;
+      background: #151519;
+      color: white;
+      padding: 0 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .search:focus { border-color: #f5c400; }
 
-.logo{
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:3px;
-}
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .filter-btn {
+      border: 1px solid #303037;
+      background: #151519;
+      color: #e8e8eb;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #f5c400;
+      color: #111;
+      border-color: #f5c400;
+    }
 
-.logo span:nth-child(1){color:#00bde8;}
-.logo span:nth-child(2){color:#ef168c;}
-.logo span:nth-child(3){color:#ffd400;}
-.logo span:nth-child(4){color:white;}
-.logo span:nth-child(5){color:#ef168c;}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #151519;
+      border: 1px solid #28282f;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #f5c400;
+    }
+    .card-image {
+      aspect-ratio: 4 / 3;
+      background: #fff;
+      overflow: hidden;
+    }
+    .card-image img {
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+    .card-body { padding: 15px; }
+    .tag {
+      display: inline-block;
+      color: #f5c400;
+      font-size: .75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .card h3 {
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 45px 15px;
+      color: #aaaab2;
+      border: 1px dashed #34343b;
+      border-radius: 14px;
+    }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:18px;
-  font-size:14px;
-}
+    .info {
+      background: #121216;
+      border-top: 1px solid #25252a;
+      border-bottom: 1px solid #25252a;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .info-box {
+      background: #18181d;
+      border: 1px solid #292930;
+      border-radius: 15px;
+      padding: 22px;
+    }
+    .info-box h3 { margin-bottom: 7px; }
+    .info-box p { color: #aaaab2; }
 
-.hero{
-  min-height:430px;
-  background:#111;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:40px 20px;
-}
+    footer {
+      text-align: center;
+      color: #8e8e97;
+      padding: 32px 20px 45px;
+    }
+    footer strong { color: #fff; }
 
-.hero h1{
-  font-size:58px;
-  margin-bottom:8px;
-}
-
-.hero h2{
-  font-size:21px;
-  letter-spacing:5px;
-  font-weight:400;
-  margin-bottom:22px;
-}
-
-.hero p{
-  max-width:720px;
-  margin:auto;
-  line-height:1.6;
-  color:#ccc;
-  font-size:18px;
-}
-
-.buttons{
-  margin-top:28px;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 24px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-  margin:5px;
-}
-
-.pink{
-  background:#ef168c;
-  color:white;
-}
-
-.white{
-  background:white;
-  color:#111;
-}
-
-section{
-  padding:65px 5%;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.title h2{
-  font-size:34px;
-  margin-bottom:8px;
-}
-
-.title p{
-  color:#666;
-}
-
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:18px;
-}
-
-.service{
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
-
-.service h3{
-  margin-bottom:10px;
-}
-
-.service p{
-  color:#666;
-  line-height:1.5;
-}
-
-.catalogo{
-  background:#111;
-  color:white;
-}
-
-.catalogo .title p{
-  color:#bbb;
-}
-
-.search{
-  max-width:720px;
-  margin:0 auto 30px;
-}
-
-.search input{
-  width:100%;
-  padding:16px;
-  border:0;
-  border-radius:9px;
-  font-size:17px;
-}
-
-.brands{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-bottom:30px;
-}
-
-.brand{
-  padding:17px;
-  background:#222;
-  border:1px solid #333;
-  border-radius:9px;
-  text-align:center;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.brand:hover{
-  background:#ef168c;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.product{
-  background:white;
-  color:#111;
-  border-radius:13px;
-  overflow:hidden;
-}
-
-.product-image{
-  height:230px;
-  background:#eee;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.placeholder{
-  color:#777;
-  font-weight:bold;
-  text-align:center;
-}
-
-.product-info{
-  padding:18px;
-}
-
-.product-info h3{
-  margin-bottom:7px;
-}
-
-.product-info p{
-  color:#777;
-  font-size:14px;
-  margin-bottom:15px;
-}
-
-.product-info a{
-  display:block;
-  background:#111;
-  color:white;
-  text-align:center;
-  text-decoration:none;
-  padding:12px;
-  border-radius:7px;
-  font-weight:bold;
-}
-
-.cores{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:14px;
-}
-
-.cor{
-  background:white;
-  padding:10px;
-  border-radius:10px;
-  text-align:center;
-  box-shadow:0 3px 12px rgba(0,0,0,.07);
-}
-
-.amostra{
-  height:65px;
-  border-radius:7px;
-  margin-bottom:8px;
-  border:1px solid #ccc;
-}
-
-.especiais{
-  margin-top:25px;
-  background:#fff5bf;
-  padding:20px;
-  border-radius:10px;
-  line-height:1.8;
-}
-
-.contato{
-  text-align:center;
-}
-
-footer{
-  background:#111;
-  color:#aaa;
-  text-align:center;
-  padding:35px 20px;
-}
-
-footer strong{
-  color:white;
-}
-
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25d366;
-  color:white;
-  text-decoration:none;
-  padding:15px 20px;
-  border-radius:40px;
-  font-weight:bold;
-  box-shadow:0 4px 18px rgba(0,0,0,.25);
-  z-index:99;
-}
-
-@media(max-width:700px){
-  nav{display:none;}
-  .hero h1{font-size:42px;}
-  .hero h2{font-size:16px;}
-}
-</style>
+    @media (max-width: 850px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .info-grid { grid-template-columns: 1fr; }
+      .nav { align-items: flex-start; }
+      .navlinks { justify-content: flex-end; }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .navlinks { display: none; }
+      .hero { min-height: 54vh; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="#inicio" class="brand">PIXEL <span>CHAPECÓ</span></a>
+      <div class="navlinks">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>
 
-<div class="logo">
-<span>P</span><span>I</span><span>X</span><span>E</span><span>L</span>
-</div>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div class="eyebrow">Adesivos para motos</div>
+        <h1>Personalize sua moto</h1>
+        <p>Escolha o modelo da sua moto e veja os adesivos disponíveis. Kits prontos para aplicação e opção de instalação em Chapecó.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-secondary" href="#contato">Falar com a Pixel</a>
+        </div>
+      </div>
+    </section>
 
-<nav>
-<a href="#inicio">Início</a>
-<a href="#servicos">Serviços</a>
-<a href="#catalogo">Catálogo</a>
-<a href="#cores">Cores</a>
-<a href="#contato">Contato</a>
-</nav>
-
-</header>
-
-
-<div class="hero" id="inicio">
-
-<div>
-
-<h1>PIXEL</h1>
-
-<h2>COMUNICAÇÃO VISUAL</h2>
-
-<p>
-Adesivos, plotagem, personalização e design para motos,
-carros, empresas, vitrines, paredes e projetos personalizados.
-</p>
-
-<div class="buttons">
-
-<a class="btn pink" href="#catalogo">
-Ver catálogo
-</a>
-
-<a class="btn white" href="#contato">
-Solicitar orçamento
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<section id="servicos">
-
-<div class="container">
-
-<div class="title">
-<h2>Nossos serviços</h2>
-<p>Comunicação visual e personalização.</p>
-</div>
-
-<div class="services">
-
-<div class="service">
-<h3>🏍️ Motos</h3>
-<p>Adesivos, carenagens, aros, nomes e personalização.</p>
-</div>
-
-<div class="service">
-<h3>🚗 Carros</h3>
-<p>Plotagem, faixas, adesivos e personalização automotiva.</p>
-</div>
-
-<div class="service">
-<h3>🏢 Empresas</h3>
-<p>Adesivos, vitrines e comunicação visual para negócios.</p>
-</div>
-
-<div class="service">
-<h3>🏠 Decoração</h3>
-<p>Paredes, ambientes e projetos personalizados.</p>
-</div>
-
-<div class="service">
-<h3>✂️ Corte em vinil</h3>
-<p>Letras, frases, números, logos e gráficos.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-<section class="catalogo" id="catalogo">
-
-  <div class="container">
-
-    <div class="title">
-      <h2>Catálogo de motos</h2>
-      <p>Escolha a marca ou pesquise o modelo.</p>
-    </div>
-
-    <div class="search">
-      <input
-        id="busca"
-        type="text"
-        placeholder="Buscar Titan, XRE, Bros, Start..."
-      >
-    </div>
-
-    <div class="filtros">
-      <button type="button">TODOS</button>
-      <button type="button">HONDA</button>
-      <button type="button">YAMAHA</button>
-      <button type="button">UNIVERSAIS</button>
-    </div>
-
-    <div class="produtos">
-
-      <div class="produto">
-        <img src="honda-titan-160.jpg" alt="Honda Titan 160">
-        <h3>Honda Titan 160</h3>
-        <p>Adesivos para Honda Titan 160</p>
+    <section class="section" id="catalogo">
+      <div class="section-title">
+        <h2>Catálogo de motos</h2>
+        <p>Pesquise pelo modelo ou use os botões para filtrar.</p>
       </div>
 
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-<section id="cores">
-
-<div class="container">
-
-<div class="title">
-<h2>Cores disponíveis</h2>
-<p>Informe o código da cor escolhida.</p>
-</div>
-
-<div class="cores">
-
-<div class="cor">
-<div class="amostra" style="background:#fff"></div>
-<strong>C01</strong><br>Branco
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#111"></div>
-<strong>C02</strong><br>Preto
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#e31b23"></div>
-<strong>C03</strong><br>Vermelho
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#1457d9"></div>
-<strong>C04</strong><br>Azul
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#ffd400"></div>
-<strong>C05</strong><br>Amarelo
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#16a34a"></div>
-<strong>C06</strong><br>Verde
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#ff6a00"></div>
-<strong>C07</strong><br>Laranja
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#bfc3c7"></div>
-<strong>C08</strong><br>Prata
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#d4a017"></div>
-<strong>C09</strong><br>Dourado
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#f04e98"></div>
-<strong>C10</strong><br>Rosa
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#7c3aed"></div>
-<strong>C11</strong><br>Roxo
-</div>
-
-<div class="cor">
-<div class="amostra" style="background:#18c5d9"></div>
-<strong>C12</strong><br>Ciano
-</div>
-
-</div>
-
-<div class="especiais">
-
-<strong>Cores especiais</strong><br>
-
-E01 — Branco refletivo<br>
-E02 — Prata refletivo<br>
-E03 — Vermelho refletivo<br>
-E04 — Amarelo neon
-
-<br>
-
-<small>
-As cores exibidas na tela são referências e podem variar conforme o material.
-</small>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section id="contato">
-
-<div class="container contato">
-
-<div class="title">
-<h2>Fale com a Pixel</h2>
-<p>Personalizamos cor, medida, nome e projeto.</p>
-</div>
-
-<a
-class="btn pink"
-href="https://wa.me/5549991352955"
-target="_blank">
-Falar no WhatsApp
-</a>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<strong>PIXEL COMUNICAÇÃO VISUAL</strong>
-
-<br><br>
-
-Adesivos • Plotagem • Personalização • Design
-
-<br><br>
-
-Chapecó - SC
-
-<br><br>
-
-© 2026 Pixel Comunicação Visual
-
-</footer>
-
-
-<a
-class="whatsapp"
-href="https://wa.me/5549991352955"
-target="_blank">
-WhatsApp
-</a>
-
-
-<script>
-
-function filtrar(marca){
-
-const produtos=document.querySelectorAll(".product");
-
-produtos.forEach(produto=>{
-
-if(marca==="todos" || produto.dataset.brand===marca){
-produto.style.display="block";
-}else{
-produto.style.display="none";
-}
-
-});
-
-}
-
-
-function buscar(){
-
-const texto=document
-.getElementById("busca")
-.value
-.toLowerCase();
-
-const produtos=document.querySelectorAll(".product");
-
-produtos.forEach(produto=>{
-
-const nome=produto.dataset.name.toLowerCase();
-
-produto.style.display=
-nome.includes(texto) ? "block" : "none";
-
-});
-
-}
-
-</script>
-
+      <div class="search-wrap">
+        <input id="searchInput" class="search" type="search" placeholder="Ex.: Biz 125, Bros 160, Titan 160..." />
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="biz">Biz</button>
+        <button class="filter-btn" data-filter="bros">Bros</button>
+        <button class="filter-btn" data-filter="cargo">Cargo</button>
+        <button class="filter-btn" data-filter="cb">CB / Twister</button>
+        <button class="filter-btn" data-filter="titan">Titan</button>
+      </div>
+
+      <div id="catalogGrid" class="grid"></div>
+    </section>
+
+    <section class="info" id="servicos">
+      <div class="section">
+        <div class="section-title">
+          <h2>Serviços Pixel</h2>
+          <p>Adesivos feitos para deixar sua moto com outra presença.</p>
+        </div>
+        <div class="info-grid">
+          <article class="info-box">
+            <h3>Adesivos por modelo</h3>
+            <p>Escolha a moto, o ano e o estilo disponível no catálogo.</p>
+          </article>
+          <article class="info-box">
+            <h3>Personalização</h3>
+            <p>Consulte a disponibilidade para alterações de cores e projetos personalizados.</p>
+          </article>
+          <article class="info-box">
+            <h3>Instalação</h3>
+            <p>Também realizamos instalação local em Chapecó, conforme disponibilidade.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="section-title">
+        <h2>Fale com a Pixel</h2>
+        <p>Escolha o modelo que você gostou e envie para nós. Depois colocamos aqui o botão direto do seu WhatsApp.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Pixel Chapecó</strong><br />
+    Adesivos para motos • Chapecó - SC
+  </footer>
+
+  <script>
+    const motos = [
+      // BIZ
+      {cat:"biz", nome:"Biz - Modelos", img:"BIZ/biz-modelos.jpg"},
+      {cat:"biz", nome:"Honda Biz 100", img:"BIZ/honda-biz-100.jpg"},
+      {cat:"biz", nome:"Honda Biz 125", img:"BIZ/honda-biz-125.jpg"},
+      {cat:"biz", nome:"Honda Biz 125 - Modelo 2", img:"BIZ/honda-biz-125-2.jpg"},
+      {cat:"biz", nome:"Honda Biz 125 - Modelo 2.2", img:"BIZ/honda-biz-125-2-2.jpg"},
+      {cat:"biz", nome:"Honda Biz 125 2023", img:"BIZ/honda-biz-125-2023.jpg"},
+      {cat:"biz", nome:"Honda Biz 125 2023 - Modelo 2", img:"BIZ/honda-biz-125-2023-2.jpg"},
+
+      // BROS
+      {cat:"bros", nome:"Bros 2020 Limitada", img:"BROS/bros 2020 limitada.jpg"},
+      {cat:"bros", nome:"Bros 160 - Adesivo Pronto", img:"BROS/bros-160-adesivo-pronto.jpg"},
+      {cat:"bros", nome:"Bros 160 2020 - Edição", img:"BROS/bross-160-2020-ediçao.jpg"},
+      {cat:"bros", nome:"Bros 2003", img:"BROS/bross-2003.jpg"},
+      {cat:"bros", nome:"Bros 2005", img:"BROS/bross-2005.jpg"},
+      {cat:"bros", nome:"Bros 2020 - Frente", img:"BROS/bross-2020-frente.jpg"},
+      {cat:"bros", nome:"Bros 2020 - Original", img:"BROS/bross-2020-original.jpg"},
+      {cat:"bros", nome:"Bros 2020 - Special Edition", img:"BROS/bross-2020-special-edition.jpg"},
+      {cat:"bros", nome:"Bros 2025", img:"BROS/bross-2025.jpg"},
+      {cat:"bros", nome:"Honda Bros 150", img:"BROS/honda-bros-150.jpg"},
+      {cat:"bros", nome:"Honda Bros 160", img:"BROS/honda-bros-160.jpg"},
+      {cat:"bros", nome:"Honda Bros 160 2020", img:"BROS/honda-bros-160-2020.jpg"},
+      {cat:"bros", nome:"Honda Bros 2012", img:"BROS/honda-bros-2012.jpg"},
+      {cat:"bros", nome:"Honda Bros 2016", img:"BROS/honda-bros-2016.jpg"},
+      {cat:"bros", nome:"Honda Bros 2018", img:"BROS/honda-bros-2018.jpg"},
+      {cat:"bros", nome:"Honda Bros 2020", img:"BROS/honda-bros-2020.jpg"},
+      {cat:"bros", nome:"Honda Bros 2023 Branca", img:"BROS/honda-bros-2023-branca.jpg"},
+      {cat:"bros", nome:"Honda Bros ESD", img:"BROS/honda-bros-esd.jpg"},
+      {cat:"bros", nome:"Kit Bros 150 KS", img:"BROS/kit-bross-150-ks.jpg"},
+
+      // CARGO
+      {cat:"cargo", nome:"Honda Cargo 160 2023", img:"CARGO/honda-cargo-160-2023-.jpg"},
+
+      // CB / TWISTER
+      {cat:"cb", nome:"Honda CB 190", img:"CB190 HONDA/cb-190.jpg"},
+      {cat:"cb", nome:"CB 250 Twister", img:"CB190 HONDA/cb-250-twister.jpg"},
+      {cat:"cb", nome:"CB 300 - Modelo 2B", img:"CB190 HONDA/cb-300-modelo-2b.jpg"},
+      {cat:"cb", nome:"Honda CB 190R Completa", img:"CB190 HONDA/honda-cb-190r-completa.jpg"},
+      {cat:"cb", nome:"Honda CB 300F 2023", img:"CB190 HONDA/honda-cb-300-f-2023.jpg"},
+      {cat:"cb", nome:"Honda CB 300F 2023 - Modelo 2", img:"CB190 HONDA/honda-cb-300f-2023.jpg"},
+      {cat:"cb", nome:"Honda CB 500X 2023", img:"CB190 HONDA/honda-cb-500-X-2023.jpg"},
+      {cat:"cb", nome:"Honda CB 500F 2023", img:"CB190 HONDA/honda-cb-500-f-2023.jpg"},
+      {cat:"cb", nome:"Honda CB 500X 2023 - Modelo 2", img:"CB190 HONDA/honda-cb-500-x-2023-2.jpg"},
+      {cat:"cb", nome:"Honda CB Twister 2019", img:"CB190 HONDA/honda-cb-twister-2019.jpg"},
+
+      // TITAN
+      {cat:"titan", nome:"Honda Titan 160", img:"honda-titan-160.jpg"},
+      {cat:"titan", nome:"Honda CG Titan 160 EX 2017", img:"HONDA CG TITAN 160 EX 2017.jpg"},
+      {cat:"titan", nome:"Adesivo Carenagem do Farol Titan 2022", img:"ADESIVO CARENAGEM DO FAROL TITAN 2022.jpg"}
+    ];
+
+    const grid = document.getElementById("catalogGrid");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    let filtroAtual = "todos";
+
+    function normalizar(texto) {
+      return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    function render() {
+      const termo = normalizar(searchInput.value.trim());
+
+      const filtradas = motos.filter(moto => {
+        const bateCategoria = filtroAtual === "todos" || moto.cat === filtroAtual;
+        const bateBusca = normalizar(moto.nome).includes(termo);
+        return bateCategoria && bateBusca;
+      });
+
+      if (!filtradas.length) {
+        grid.innerHTML = '<div class="empty">Nenhum modelo encontrado. Tente outro nome.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtradas.map(moto => `
+        <article class="card">
+          <div class="card-image">
+            <img src="${encodeURI(moto.img)}" alt="${moto.nome}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">${moto.cat === "cb" ? "CB / Twister" : moto.cat}</span>
+            <h3>${moto.nome}</h3>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", render);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        filtroAtual = btn.dataset.filter;
+        render();
+      });
+    });
+
+    render();
+  </script>
 </body>
 </html>
